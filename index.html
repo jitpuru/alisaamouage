@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alisa Amouage — Jazz-Pop Vocalist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+/* ── RESET & ROOT ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --black: #080808; --charcoal: #141414; --card-bg: #1a1a1a;
+  --gold: #C9A96E; --gold-light: #dfc08a;
+  --ivory: #F0EDE6; --silver: #8A8A8A; --dim: #333;
+}
+html { scroll-behavior: smooth; }
+body { background: var(--black); color: var(--ivory); font-family: 'Inter', sans-serif; font-weight: 300; font-size: 16px; line-height: 1.7; overflow-x: hidden; }
+
+/* ── NAV ── */
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; display: flex; align-items: center; justify-content: space-between; padding: 1.5rem 4rem; background: linear-gradient(to bottom, rgba(8,8,8,0.95) 0%, transparent 100%); transition: background 0.4s; }
+nav.solid { background: rgba(8,8,8,0.97); }
+.nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; font-weight: 300; letter-spacing: 0.2em; color: var(--gold); text-decoration: none; text-transform: uppercase; cursor: pointer; }
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a { font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ivory); text-decoration: none; opacity: 0.65; transition: opacity 0.3s, color 0.3s; cursor: pointer; }
+.nav-links a:hover { opacity: 1; color: var(--gold); }
+.nav-links a.active { opacity: 1; color: var(--gold); }
+.nav-cta { font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); text-decoration: none; border: 1px solid rgba(201,169,110,0.4); padding: 0.6rem 1.4rem; transition: border-color 0.3s, background 0.3s; cursor: pointer; }
+.nav-cta:hover { border-color: var(--gold); background: rgba(201,169,110,0.08); }
+.nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+.nav-hamburger span { width: 24px; height: 1px; background: var(--ivory); transition: all 0.3s; }
+.mobile-menu { display: none; position: fixed; inset: 0; background: rgba(8,8,8,0.98); z-index: 190; flex-direction: column; align-items: center; justify-content: center; gap: 2rem; }
+.mobile-menu.open { display: flex; }
+.mobile-menu a { font-size: 1.5rem; font-family: 'Cormorant Garamond', serif; font-weight: 300; color: var(--ivory); text-decoration: none; letter-spacing: 0.1em; transition: color 0.3s; }
+.mobile-menu a:hover { color: var(--gold); }
+.mobile-close { position: absolute; top: 2rem; right: 2rem; font-size: 2rem; color: var(--silver); cursor: pointer; background: none; border: none; line-height: 1; }
+
+/* ── PAGE SYSTEM ── */
+.page { display: none; opacity: 0; transition: opacity 0.4s ease; }
+.page.active { display: block; opacity: 1; }
+.page.fade-in { animation: fadeInPage 0.4s ease forwards; }
+@keyframes fadeInPage { from { opacity: 0; } to { opacity: 1; } }
+
+/* ── SHARED ── */
+.container { max-width: 1100px; margin: 0 auto; padding: 0 4rem; }
+.section-label { font-size: 0.6rem; letter-spacing: 0.4em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
+.section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 300; line-height: 1.1; color: var(--ivory); margin-bottom: 2rem; }
+.section-title em { font-style: italic; color: var(--gold-light); }
+.btn-primary { display: inline-block; font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--black); background: var(--gold); padding: 1.1rem 2.8rem; text-decoration: none; cursor: pointer; border: none; transition: background 0.3s; }
+.btn-primary:hover { background: var(--gold-light); }
+.btn-secondary { display: inline-block; font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); border: 1px solid rgba(201,169,110,0.5); padding: 1.1rem 2.8rem; text-decoration: none; cursor: pointer; background: none; margin-left: 1.25rem; transition: border-color 0.3s, background 0.3s; }
+.btn-secondary:hover { border-color: var(--gold); background: rgba(201,169,110,0.06); }
+.page-hero { padding: 10rem 0 6rem; background: var(--charcoal); position: relative; }
+.page-hero::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 1px; background: linear-gradient(to right, transparent, var(--gold), transparent); }
+.page-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(3rem, 6vw, 5.5rem); font-weight: 300; line-height: 1; color: var(--ivory); margin-bottom: 1.5rem; }
+.page-title em { font-style: italic; color: var(--gold-light); }
+.page-subtitle { font-size: 1rem; color: rgba(240,237,230,0.6); max-width: 580px; line-height: 1.9; }
+.gold-line { position: relative; } .gold-line::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(to right, transparent, var(--gold), transparent); }
+footer { background: var(--black); border-top: 1px solid var(--dim); padding: 3rem 0; }
+.footer-inner { display: flex; align-items: center; justify-content: space-between; }
+.footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 300; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); cursor: pointer; }
+.footer-copy { font-size: 0.65rem; color: var(--silver); }
+.footer-social { display: flex; gap: 1.5rem; }
+.footer-social a { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--silver); text-decoration: none; transition: color 0.3s; }
+.footer-social a:hover { color: var(--gold); }
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.85s ease, transform 0.85s ease; }
+.reveal.visible { opacity: 1; transform: none; }
+
+/* ══════════════════════════════════════
+   PAGE 1 — HOME
+══════════════════════════════════════ */
+.hero { position: relative; height: 100vh; min-height: 700px; display: flex; align-items: center; justify-content: center; text-align: center; overflow: hidden; }
+.hero-bg { position: absolute; inset: 0; background: url('https://images.squarespace-cdn.com/content/v1/6805d79834f5d06fffe62691/791b0b89-41c7-4ae3-b226-f9034e0f441a/20250103-DSC01783.jpg') center/cover no-repeat; transform: scale(1.05); transition: transform 8s ease; }
+.hero:hover .hero-bg { transform: scale(1.0); }
+.hero-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(8,8,8,0.3) 0%, rgba(8,8,8,0.45) 50%, rgba(8,8,8,0.85) 100%); }
+.hero-content { position: relative; z-index: 2; padding: 0 2rem; }
+.hero-eyebrow { font-size: 0.65rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem; opacity: 0; animation: fadeUp 1s 0.4s forwards; }
+.hero-name { font-family: 'Cormorant Garamond', serif; font-size: clamp(4rem, 12vw, 9rem); font-weight: 300; line-height: 0.9; color: var(--ivory); opacity: 0; animation: fadeUp 1s 0.7s forwards; }
+.hero-name em { font-style: italic; color: var(--gold-light); }
+.hero-tagline { font-size: clamp(0.75rem, 1.5vw, 0.9rem); letter-spacing: 0.15em; text-transform: uppercase; color: rgba(240,237,230,0.55); margin-top: 1.5rem; opacity: 0; animation: fadeUp 1s 1s forwards; }
+.hero-scroll { position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 0.5rem; opacity: 0; animation: fadeIn 1s 1.6s forwards; }
+.hero-scroll span { font-size: 0.6rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--silver); }
+.scroll-line { width: 1px; height: 40px; background: linear-gradient(to bottom, var(--gold), transparent); animation: scrollPulse 2s 2s infinite; }
+.about { background: var(--charcoal); padding: 7rem 0; }
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; }
+.about-image { position: relative; }
+.about-image img { width: 100%; aspect-ratio: 3/4; object-fit: cover; display: block; }
+.about-image::after { content: ''; position: absolute; inset: 1.5rem -1.5rem -1.5rem 1.5rem; border: 1px solid rgba(201,169,110,0.25); z-index: -1; }
+.about-text p { color: rgba(240,237,230,0.7); margin-bottom: 1.5rem; font-size: 1rem; line-height: 1.9; }
+.about-stats { display: flex; gap: 3rem; margin-top: 3rem; padding-top: 2.5rem; border-top: 1px solid var(--dim); }
+.stat-number { font-family: 'Cormorant Garamond', serif; font-size: 3rem; font-weight: 300; color: var(--gold); line-height: 1; }
+.stat-label { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--silver); margin-top: 0.4rem; }
+.gallery-wrap { background: var(--black); padding: 7rem 0; }
+.gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; margin-top: 3rem; }
+.gallery-item { position: relative; overflow: hidden; aspect-ratio: 3/4; background: var(--charcoal); }
+.gallery-item:first-child { grid-row: span 2; aspect-ratio: auto; }
+.gallery-item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.7s ease, filter 0.7s ease; filter: brightness(0.85) saturate(0.9); }
+.gallery-item:hover img { transform: scale(1.04); filter: brightness(0.95) saturate(1); }
+.performances { background: var(--charcoal); padding: 7rem 0; }
+.perf-intro { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; margin-bottom: 4rem; }
+.perf-intro p { color: rgba(240,237,230,0.65); line-height: 1.9; }
+.venues-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--dim); }
+.venue-card { background: var(--card-bg); padding: 2rem; transition: background 0.3s; }
+.venue-card:hover { background: #222; }
+.venue-name { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: var(--ivory); margin-bottom: 0.3rem; }
+.venue-location { font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--silver); }
+.venue-type { display: inline-block; font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); border: 1px solid rgba(201,169,110,0.3); padding: 0.2rem 0.5rem; margin-top: 0.75rem; }
+.coaching-wrap { background: var(--black); padding: 7rem 0; position: relative; }
+.coaching-wrap::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(to right, transparent, var(--gold), transparent); }
+.coaching-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; }
+.coaching-content p { color: rgba(240,237,230,0.65); line-height: 1.9; margin-bottom: 1.5rem; }
+.coaching-features { list-style: none; margin: 2.5rem 0; }
+.coaching-features li { display: flex; gap: 1rem; padding: 1rem 0; border-bottom: 1px solid var(--dim); font-size: 0.9rem; color: rgba(240,237,230,0.7); }
+.coaching-features li::before { content: '—'; color: var(--gold); flex-shrink: 0; }
+.coaching-image img { width: 100%; aspect-ratio: 4/5; object-fit: cover; filter: brightness(0.8) saturate(0.85); }
+.contact-wrap { background: var(--charcoal); padding: 8rem 0; text-align: center; }
+.contact-tagline { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 300; font-style: italic; color: rgba(240,237,230,0.4); margin-bottom: 3rem; line-height: 1.3; }
+.contact-links { display: flex; align-items: center; justify-content: center; gap: 3rem; margin-bottom: 4rem; }
+.contact-link { font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--silver); text-decoration: none; transition: color 0.3s; }
+.contact-link:hover { color: var(--gold); }
+
+/* ══════════════════════════════════════
+   PAGE 2 — VOICE COACHING
+══════════════════════════════════════ */
+.vc-intro { background: var(--black); padding: 6rem 0; }
+.vc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; }
+.vc-grid p { color: rgba(240,237,230,0.7); line-height: 1.9; margin-bottom: 1.5rem; }
+.vc-grid p strong { color: var(--ivory); font-weight: 400; }
+.format-list { list-style: none; margin-top: 2.5rem; }
+.format-list-title { font-size: 0.6rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.25rem; }
+.format-list li { display: flex; align-items: center; gap: 1rem; padding: 0.85rem 0; border-bottom: 1px solid var(--dim); font-size: 0.88rem; color: rgba(240,237,230,0.75); }
+.format-list li::before { content: ''; width: 4px; height: 4px; background: var(--gold); border-radius: 50%; flex-shrink: 0; }
+.pricing-box { margin-top: 2.5rem; padding: 2rem; border: 1px solid var(--dim); }
+.framework-wrap { background: var(--charcoal); padding: 6rem 0; }
+.five-c { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; background: var(--dim); margin-top: 3rem; }
+.c-card { background: var(--card-bg); padding: 2.5rem 1.5rem; text-align: center; transition: background 0.3s; }
+.c-card:hover { background: #222; }
+.c-letter { font-family: 'Cormorant Garamond', serif; font-size: 4rem; font-weight: 300; color: var(--gold); line-height: 1; margin-bottom: 0.75rem; }
+.c-name { font-size: 0.68rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--ivory); margin-bottom: 0.75rem; }
+.c-desc { font-size: 0.78rem; color: var(--silver); line-height: 1.6; }
+.science-wrap { background: var(--black); padding: 6rem 0; }
+.science-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--dim); margin-top: 3rem; }
+.science-card { background: var(--card-bg); padding: 2.5rem; }
+.science-num { font-family: 'Cormorant Garamond', serif; font-size: 3rem; font-weight: 300; color: var(--gold); line-height: 1; margin-bottom: 1rem; }
+.science-title { font-size: 0.85rem; font-weight: 500; color: var(--ivory); margin-bottom: 0.5rem; }
+.science-text { font-size: 0.83rem; color: var(--silver); line-height: 1.7; }
+.programmes-wrap { background: var(--charcoal); padding: 6rem 0; }
+.prog-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--dim); margin-top: 3rem; }
+.prog-card { background: var(--card-bg); padding: 2.5rem; transition: background 0.3s; }
+.prog-card:hover { background: #222; }
+.prog-tag { font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.85rem; }
+.prog-name { font-family: 'Cormorant Garamond', serif; font-size: 1.35rem; color: var(--ivory); margin-bottom: 0.85rem; line-height: 1.2; }
+.prog-desc { font-size: 0.83rem; color: rgba(240,237,230,0.6); line-height: 1.8; }
+.testi-wrap { background: var(--black); padding: 6rem 0; }
+.testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 3rem; }
+.testi-card { background: var(--card-bg); padding: 2.5rem; border-top: 2px solid var(--gold); }
+.testi-card.placeholder { border-top-color: var(--dim); border-top-style: dashed; }
+.testi-quote { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; font-style: italic; color: rgba(240,237,230,0.8); line-height: 1.7; margin-bottom: 1.5rem; }
+.testi-card.placeholder .testi-quote { color: var(--dim); font-style: normal; font-family: 'Inter', sans-serif; font-size: 0.78rem; }
+.testi-name { font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); }
+.testi-role { font-size: 0.68rem; color: var(--silver); margin-top: 0.2rem; }
+
+/* ══════════════════════════════════════
+   PAGE 3 — E-LEARNING
+══════════════════════════════════════ */
+.course-wrap { background: var(--black); padding: 6rem 0; }
+.course-card { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; padding-bottom: 5rem; margin-bottom: 5rem; border-bottom: 1px solid var(--dim); }
+.course-card:last-child { border-bottom: none; padding-bottom: 0; margin-bottom: 0; }
+.course-card.dimmed { opacity: 0.45; }
+.course-badge { display: inline-block; font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); border: 1px solid rgba(201,169,110,0.35); padding: 0.25rem 0.7rem; margin-bottom: 1.25rem; }
+.course-title { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 300; color: var(--ivory); line-height: 1.2; margin-bottom: 1.25rem; }
+.course-desc { color: rgba(240,237,230,0.65); line-height: 1.9; font-size: 0.93rem; margin-bottom: 2rem; }
+.course-meta { display: flex; gap: 2rem; margin-bottom: 2.5rem; }
+.meta-item { display: flex; flex-direction: column; gap: 0.2rem; }
+.meta-label { font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--silver); }
+.meta-value { font-size: 0.88rem; color: var(--ivory); }
+.course-features { list-style: none; margin-bottom: 2.5rem; }
+.course-features li { display: flex; gap: 1rem; padding: 0.65rem 0; border-bottom: 1px solid var(--dim); font-size: 0.83rem; color: rgba(240,237,230,0.7); }
+.course-features li::before { content: '—'; color: var(--gold); flex-shrink: 0; }
+.course-img { background: var(--card-bg); overflow: hidden; aspect-ratio: 4/3; }
+.course-img img { width: 100%; height: 100%; object-fit: cover; }
+.course-img-placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: var(--dim); font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; min-height: 280px; }
+.reviews-wrap { background: var(--charcoal); padding: 6rem 0; }
+.reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; }
+.review-card { background: var(--card-bg); padding: 2rem; border-left: 2px solid var(--gold); }
+.review-stars { color: var(--gold); font-size: 0.8rem; margin-bottom: 1rem; }
+.review-text { font-family: 'Cormorant Garamond', serif; font-size: 1rem; font-style: italic; color: rgba(240,237,230,0.8); line-height: 1.7; margin-bottom: 1.25rem; }
+.review-author { font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--silver); }
+.why-wrap { background: var(--black); padding: 6rem 0; }
+.why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--dim); margin-top: 3rem; }
+.why-card { background: var(--card-bg); padding: 2.5rem; }
+.why-num { font-family: 'Cormorant Garamond', serif; font-size: 3.5rem; font-weight: 300; color: var(--gold); line-height: 1; margin-bottom: 1rem; }
+.why-title { font-size: 0.83rem; font-weight: 500; color: var(--ivory); margin-bottom: 0.75rem; }
+.why-text { font-size: 0.83rem; color: var(--silver); line-height: 1.7; }
+
+/* ══════════════════════════════════════
+   PAGE 4 — BLOG
+══════════════════════════════════════ */
+.blog-wrap { background: var(--black); padding: 6rem 0; }
+.blog-layout { display: grid; grid-template-columns: 2fr 1fr; gap: 5rem; }
+.post-featured { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; padding-bottom: 3rem; border-bottom: 1px solid var(--dim); margin-bottom: 1rem; }
+.post-img { aspect-ratio: 16/9; background: var(--card-bg); overflow: hidden; }
+.post-img img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.8); transition: transform 0.6s, filter 0.6s; }
+.post-img-ph { width: 100%; height: 100%; min-height: 160px; display: flex; align-items: center; justify-content: center; color: var(--dim); font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; }
+.post-meta { display: flex; gap: 1rem; align-items: center; margin-bottom: 0.85rem; }
+.post-tag { font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); border: 1px solid rgba(201,169,110,0.3); padding: 0.18rem 0.55rem; }
+.post-date { font-size: 0.63rem; color: var(--silver); }
+.post-title { font-family: 'Cormorant Garamond', serif; font-size: 1.7rem; font-weight: 300; color: var(--ivory); line-height: 1.25; margin-bottom: 0.7rem; display: block; cursor: pointer; transition: color 0.3s; }
+.post-title:hover { color: var(--gold-light); }
+.post-excerpt { font-size: 0.88rem; color: rgba(240,237,230,0.6); line-height: 1.8; margin-bottom: 1.25rem; }
+.read-more { font-size: 0.63rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); text-decoration: none; border-bottom: 1px solid rgba(201,169,110,0.35); padding-bottom: 0.12rem; cursor: pointer; }
+.post-item { display: grid; grid-template-columns: 120px 1fr; gap: 1.75rem; padding: 2.25rem 0; border-bottom: 1px solid var(--dim); }
+.post-item-img { aspect-ratio: 1; background: var(--card-bg); overflow: hidden; }
+.post-item .post-title { font-size: 1.15rem; }
+.sidebar { position: sticky; top: 7rem; }
+.sidebar-block { margin-bottom: 2.75rem; padding-bottom: 2.75rem; border-bottom: 1px solid var(--dim); }
+.sidebar-block:last-child { border-bottom: none; }
+.sidebar-title { font-size: 0.6rem; letter-spacing: 0.32em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.25rem; }
+.sidebar-avatar { width: 56px; height: 56px; border-radius: 50%; background: var(--card-bg); overflow: hidden; margin-bottom: 0.75rem; }
+.sidebar-avatar img { width: 100%; height: 100%; object-fit: cover; }
+.sidebar-name { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; color: var(--ivory); margin-bottom: 0.5rem; }
+.sidebar-bio { font-size: 0.8rem; color: var(--silver); line-height: 1.7; }
+.sidebar-link { display: inline-block; margin-top: 0.75rem; font-size: 0.63rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); text-decoration: none; border-bottom: 1px solid rgba(201,169,110,0.35); padding-bottom: 0.12rem; }
+.cat-list { list-style: none; }
+.cat-list li { display: flex; justify-content: space-between; padding: 0.55rem 0; border-bottom: 1px solid var(--dim); }
+.cat-list li:last-child { border-bottom: none; }
+.cat-list a { font-size: 0.8rem; color: rgba(240,237,230,0.7); text-decoration: none; cursor: pointer; transition: color 0.3s; }
+.cat-list a:hover { color: var(--gold); }
+.cat-count { font-size: 0.68rem; color: var(--silver); }
+.sub-form { display: flex; flex-direction: column; gap: 0.7rem; }
+.sub-input { background: var(--card-bg); border: 1px solid var(--dim); color: var(--ivory); padding: 0.7rem 1rem; font-family: 'Inter', sans-serif; font-size: 0.83rem; font-weight: 300; outline: none; transition: border-color 0.3s; }
+.sub-input::placeholder { color: var(--silver); }
+.sub-input:focus { border-color: var(--gold); }
+.sub-btn { background: var(--gold); color: var(--black); border: none; padding: 0.7rem 1rem; font-family: 'Inter', sans-serif; font-size: 0.63rem; letter-spacing: 0.2em; text-transform: uppercase; cursor: pointer; transition: background 0.3s; }
+.sub-btn:hover { background: var(--gold-light); }
+.sub-note { font-size: 0.68rem; color: var(--silver); line-height: 1.5; }
+.sb-link { display: block; font-size: 0.63rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); text-decoration: none; border-bottom: 1px solid rgba(201,169,110,0.35); padding-bottom: 0.12rem; margin-bottom: 0.7rem; cursor: pointer; }
+
+/* ── SHARED CTA BLOCK ── */
+.cta-block { text-align: center; padding: 7rem 0; }
+.cta-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 300; color: var(--ivory); margin-bottom: 1rem; }
+.cta-sub { color: rgba(240,237,230,0.55); max-width: 500px; margin: 0 auto 3rem; font-size: 0.93rem; }
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes scrollPulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .blog-layout { grid-template-columns: 1fr; }
+  .sidebar { position: static; }
+  .post-featured { grid-template-columns: 1fr; }
+}
+@media (max-width: 768px) {
+  nav { padding: 1.25rem 1.5rem; }
+  .nav-links { display: none; }
+  .nav-hamburger { display: flex; }
+  .container { padding: 0 1.5rem; }
+  .about-grid, .coaching-inner, .perf-intro, .vc-grid, .course-card { grid-template-columns: 1fr; gap: 3rem; }
+  .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+  .gallery-item:first-child { grid-row: span 1; aspect-ratio: 3/4; }
+  .venues-grid, .science-grid, .testi-grid, .reviews-grid, .why-grid { grid-template-columns: 1fr; }
+  .five-c { grid-template-columns: repeat(3, 1fr); }
+  .prog-grid { grid-template-columns: 1fr; }
+  .contact-links { flex-direction: column; gap: 1.5rem; }
+  .footer-inner { flex-direction: column; gap: 1.5rem; text-align: center; }
+  .about-stats { gap: 2rem; }
+  .post-item { grid-template-columns: 90px 1fr; gap: 1.25rem; }
+  .btn-secondary { margin-left: 0; margin-top: 1rem; display: block; text-align: center; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-bg, .reveal { transition: none; }
+  .reveal { opacity: 1; transform: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav id="nav">
+  <a class="nav-logo" onclick="showPage('home')">Alisa Amouage</a>
+  <ul class="nav-links">
+    <li><a onclick="showPage('home')" data-page="home">Home</a></li>
+    <li><a onclick="scrollToSection('about')" data-page="home-about">About</a></li>
+    <li><a onclick="scrollToSection('gallery')" data-page="home-gallery">Gallery</a></li>
+    <li><a onclick="showPage('coaching')" data-page="coaching">Voice Coaching</a></li>
+    <li><a onclick="showPage('elearning')" data-page="elearning">E-Learning</a></li>
+    <li><a onclick="showPage('blog')" data-page="blog">Blog</a></li>
+  </ul>
+  <a class="nav-cta" onclick="scrollToSection('contact')">Book Alisa</a>
+  <div class="nav-hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- ── MOBILE MENU ── -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" onclick="toggleMenu()">&times;</button>
+  <a onclick="showPage('home'); toggleMenu()">Home</a>
+  <a onclick="scrollToSection('about'); toggleMenu()">About</a>
+  <a onclick="scrollToSection('gallery'); toggleMenu()">Gallery</a>
+  <a onclick="showPage('coaching'); toggleMenu()">Voice Coaching</a>
+  <a onclick="showPage('elearning'); toggleMenu()">E-Learning</a>
+  <a onclick="showPage('blog'); toggleMenu()">Blog</a>
+  <a onclick="scrollToSection('contact'); toggleMenu()" style="color:var(--gold);">Book Alisa</a>
+</div>
+
+<!-- ════════════════════════════════════
+     PAGE: HOME
+════════════════════════════════════ -->
+<div class="page active" id="page-home">
+
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">Jazz &middot; Pop &middot; Soul</p>
+      <h1 class="hero-name">Alisa<br><em>Amouage</em></h1>
+      <p class="hero-tagline">A voice that moves hearts &nbsp;&middot;&nbsp; elevates every moment</p>
+    </div>
+    <div class="hero-scroll"><span>Scroll</span><div class="scroll-line"></div></div>
+  </section>
+
+  <section class="about" id="about">
+    <div class="container">
+      <div class="about-grid reveal">
+        <div class="about-image">
+          <img src="https://images.squarespace-cdn.com/content/v1/6805d79834f5d06fffe62691/11201dc9-a482-4221-839b-bc172360fd64/20250214-DSC01944-Edit.jpg" alt="Alisa Amouage performing">
+        </div>
+        <div class="about-text">
+          <p class="section-label">The Artist</p>
+          <h2 class="section-title">Warmth,<br>elegance, <em>soul.</em></h2>
+          <p>Alisa Amouage is a jazz-pop vocalist with over 15 years of experience transforming events into lasting memories. Trained at the University of Modern Arts in Moscow, she brings a rare blend of classical technique and heartfelt emotion to every stage she graces.</p>
+          <p>Her voice carries the intimacy of late-night jazz clubs and the grandeur of concert halls. Whether performing at an intimate corporate dinner or a landmark gala, Alisa's presence is unmistakable — warm, polished, and deeply human.</p>
+          <p>Currently working on her debut album, Alisa continues to captivate audiences across Southeast Asia with her signature sound.</p>
+          <div class="about-stats">
+            <div><div class="stat-number">15+</div><div class="stat-label">Years performing</div></div>
+            <div><div class="stat-number">50+</div><div class="stat-label">Stages &amp; venues</div></div>
+            <div><div class="stat-number">3</div><div class="stat-label">Countries</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="gallery-wrap" id="gallery">
+    <div class="container">
+      <p class="section-label reveal">Performance Gallery</p>
+      <h2 class="section-title reveal">Every stage,<br><em>a story told.</em></h2>
+    </div>
+    <div class="gallery-grid reveal">
+      <div class="gallery-item"><img src="https://images.squarespace-cdn.com/content/v1/6805d79834f5d06fffe62691/78baef65-6691-4c2f-a4ce-09847efa79be/THA_3809.JPG" alt="Alisa performing live"></div>
+      <div class="gallery-item"><img src="https://images.squarespace-cdn.com/content/v1/6805d79834f5d06fffe62691/22986e38-bdee-4ac7-bfee-84bc858f2834/TI201252+2.jpg" alt="Alisa on stage"></div>
+      <div class="gallery-item"><img src="https://images.squarespace-cdn.com/content/v1/6805d79834f5d06fffe62691/35444b44-2873-49ae-8246-f9158e4b5092/photo_6102778374909530189_y.jpg" alt="Alisa performing"></div>
+      <div class="gallery-item"><img src="https://images.squarespace-cdn.com/content/v1/6805d79834f5d06fffe62691/ad223c97-8816-4e4a-a7e4-8e204b86e52c/Illusion-04133.JPEG" alt="Alisa at event"></div>
+      <div class="gallery-item"><img src="https://images.squarespace-cdn.com/content/v1/6805d79834f5d06fffe62691/cd2aa630-b147-4add-8997-4db2280801e2/HUY03295.JPG" alt="Alisa performing jazz"></div>
+    </div>
+  </section>
+
+  <section class="performances" id="performances">
+    <div class="container">
+      <div class="perf-intro reveal">
+        <div><p class="section-label">Recent Stages</p><h2 class="section-title">Where the<br>music <em>lives.</em></h2></div>
+        <div style="padding-top:1rem"><p>From whisky bars to five-star hotel galas, from intimate anniversary dinners to landmark corporate celebrations — Alisa brings the same total commitment to every room.</p></div>
+      </div>
+      <div class="venues-grid reveal">
+        <div class="venue-card"><div class="venue-name">Park Hyatt</div><div class="venue-location">Ho Chi Minh City</div><span class="venue-type">Wedding</span></div>
+        <div class="venue-card"><div class="venue-name">Zannier Hotel</div><div class="venue-location">Bai San Ho</div><span class="venue-type">NYE Dinner</span></div>
+        <div class="venue-card"><div class="venue-name">Capella Hanoi</div><div class="venue-location">Hanoi</div><span class="venue-type">Corporate Gala</span></div>
+        <div class="venue-card"><div class="venue-name">La Casa Del Habano</div><div class="venue-location">Ho Chi Minh City</div><span class="venue-type">Live Performance</span></div>
+        <div class="venue-card"><div class="venue-name">The Landmark Vietnam</div><div class="venue-location">Ho Chi Minh City</div><span class="venue-type">30th Anniversary</span></div>
+        <div class="venue-card"><div class="venue-name">The Love Unfolds</div><div class="venue-location">Vietnam</div><span class="venue-type">Orchestral Concert</span></div>
+        <div class="venue-card"><div class="venue-name">Harbour Energy</div><div class="venue-location">Vietnam</div><span class="venue-type">20th Anniversary</span></div>
+        <div class="venue-card"><div class="venue-name">Bebop Saigon</div><div class="venue-location">Ho Chi Minh City</div><span class="venue-type">Residency</span></div>
+        <div class="venue-card"><div class="venue-name">Lavender by Chang</div><div class="venue-location">Hanoi</div><span class="venue-type">Anniversary Dinner</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="coaching-wrap" id="coaching-home">
+    <div class="container">
+      <div class="coaching-inner">
+        <div class="coaching-content reveal">
+          <p class="section-label">Voice Coaching</p>
+          <h2 class="section-title">Find your<br><em>voice.</em></h2>
+          <p>Beyond the stage, Alisa shares her craft through the Alisa Amouage Voice Readiness Programme — a bespoke coaching experience for executives, speakers, and performers who want to command presence through the power of their voice.</p>
+          <p>Drawing on her conservatoire training and 15 years of performance experience, Alisa's coaching is precise, empathetic, and transformative.</p>
+          <ul class="coaching-features">
+            <li>Executive voice and public speaking presence</li>
+            <li>Breathing, resonance, and vocal stamina</li>
+            <li>Performance confidence and stage presence</li>
+            <li>One-on-one and group programme formats</li>
+            <li>E-learning courses available online</li>
+          </ul>
+          <button class="btn-secondary" onclick="showPage('coaching')" style="margin-left:0;">Explore Voice Coaching</button>
+        </div>
+        <div class="coaching-image reveal">
+          <img src="https://images.squarespace-cdn.com/content/v1/6805d79834f5d06fffe62691/00a15c8e-6b0e-446a-9d01-698153bc8f68/photo_6102778374909530229_y.jpg" alt="Alisa Amouage voice coaching">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact-wrap" id="contact">
+    <div class="container">
+      <p class="section-label reveal">Get in Touch</p>
+      <p class="contact-tagline reveal">"Ready to make your<br>next event unforgettable?"</p>
+      <div class="contact-links reveal">
+        <a href="mailto:hello@alisaamouage.com" class="contact-link">hello@alisaamouage.com</a>
+        <span style="color:var(--dim)">|</span>
+        <a href="https://www.instagram.com/alisaamouage/" target="_blank" class="contact-link">Instagram</a>
+        <span style="color:var(--dim)">|</span>
+        <a href="https://www.linkedin.com/in/alisa-amouage/" target="_blank" class="contact-link">LinkedIn</a>
+      </div>
+      <div class="reveal">
+        <a href="mailto:hello@alisaamouage.com" class="btn-primary">Book Alisa</a>
+        <button class="btn-secondary" onclick="showPage('coaching')">Voice Coaching</button>
+      </div>
+    </div>
+  </section>
+
+  <footer><div class="container"><div class="footer-inner">
+    <div class="footer-logo" onclick="showPage('home')">Alisa Amouage</div>
+    <div class="footer-copy">&copy; 2026 Alisa Amouage. All rights reserved.</div>
+    <div class="footer-social">
+      <a href="https://www.instagram.com/alisaamouage/" target="_blank">Instagram</a>
+      <a href="https://www.linkedin.com/in/alisa-amouage/" target="_blank">LinkedIn</a>
+    </div>
+  </div></div></footer>
+</div>
+
+<!-- ════════════════════════════════════
+     PAGE: VOICE COACHING
+════════════════════════════════════ -->
+<div class="page" id="page-coaching">
+  <div class="page-hero">
+    <div class="container">
+      <p class="section-label">Voice Coaching</p>
+      <h1 class="page-title">The Voice<br><em>Readiness</em><br>Programme</h1>
+      <p class="page-subtitle">A structured voice coaching system built to help you sound ready for what comes next — under pressure, under the spotlight, when it matters most.</p>
+    </div>
+  </div>
+
+  <section class="vc-intro">
+    <div class="container">
+      <div class="vc-grid reveal">
+        <div>
+          <p class="section-label">The Approach</p>
+          <h2 class="section-title">One framework.<br><em>Every context.</em></h2>
+          <p>The Alisa Amouage Voice Readiness Programme is built around a single methodology — the <strong>5C Voice Framework</strong> — applied to different speaking contexts based on what you need to do with your voice.</p>
+          <p>This is not a different method for each outcome. The framework stays the same. The application changes.</p>
+          <p>Voice readiness is the ability to rely on your voice in important moments — clear, steady, confident, and credible — not only when things feel comfortable, but especially when pressure is present, stakes are high, or attention is focused on you.</p>
+        </div>
+        <div>
+          <p class="format-list-title">Programme Formats</p>
+          <ul class="format-list">
+            <li>Four-week one-to-one coaching engagements</li>
+            <li>In-house workshops for teams and leaders</li>
+            <li>Executive briefings and keynote speeches</li>
+            <li>Group coaching programmes</li>
+          </ul>
+          <div class="pricing-box">
+            <p class="format-list-title">Pricing</p>
+            <p style="color:rgba(240,237,230,0.6); font-size:0.88rem; line-height:1.8;">Programme investment varies by format and duration. Contact Alisa directly for a tailored proposal.</p>
+            <a href="mailto:hello@alisaamouage.com" style="display:inline-block; margin-top:1.25rem; font-size:0.68rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); text-decoration:none; border-bottom:1px solid rgba(201,169,110,0.4); padding-bottom:0.2rem;">Enquire about pricing →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="framework-wrap">
+    <div class="container">
+      <p class="section-label reveal">The Methodology</p>
+      <h2 class="section-title reveal">The 5C Voice <em>Framework</em></h2>
+      <div class="five-c reveal">
+        <div class="c-card"><div class="c-letter">C</div><div class="c-name">Clarity</div><div class="c-desc">Precise articulation so every word lands with intention</div></div>
+        <div class="c-card"><div class="c-letter">C</div><div class="c-name">Confidence</div><div class="c-desc">Vocal authority that holds when pressure is highest</div></div>
+        <div class="c-card"><div class="c-letter">C</div><div class="c-name">Calm</div><div class="c-desc">Breath control that keeps your voice steady under stress</div></div>
+        <div class="c-card"><div class="c-letter">C</div><div class="c-name">Competence</div><div class="c-desc">Technical mastery of tone, resonance, and pacing</div></div>
+        <div class="c-card"><div class="c-letter">C</div><div class="c-name">Charisma</div><div class="c-desc">Warmth and presence that makes an audience lean in</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="science-wrap">
+    <div class="container">
+      <p class="section-label reveal">Backed by Voice Science</p>
+      <h2 class="section-title reveal">Why your voice<br><em>matters.</em></h2>
+      <p style="color:rgba(240,237,230,0.6); max-width:620px; margin-bottom:0" class="reveal">Voice readiness is grounded in physiology, neuroscience, and behavioural psychology. How we breathe and speak directly affects cognitive clarity, emotional regulation, and perceived credibility.</p>
+      <div class="science-grid reveal">
+        <div class="science-card"><div class="science-num">01</div><div class="science-title">Regulated Breathing</div><div class="science-text">Improves focus and emotional control by influencing heart rate variability and stress hormone levels — the foundation of a steady, trustworthy voice.</div></div>
+        <div class="science-card"><div class="science-num">02</div><div class="science-title">Vocal Stability</div><div class="science-text">Increases perceived confidence and credibility. Listeners unconsciously judge authority and competence through tonal consistency and pacing.</div></div>
+        <div class="science-card"><div class="science-num">03</div><div class="science-title">Reduced Vocal Tension</div><div class="science-text">Supports sustained performance and stamina. Releasing tension allows your full vocal range to emerge naturally under pressure.</div></div>
+        <div class="science-card"><div class="science-num">04</div><div class="science-title">Clear Articulation</div><div class="science-text">Improves listener trust and comprehension. When words land cleanly, audiences process ideas faster — and trust the speaker more deeply.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="programmes-wrap">
+    <div class="container">
+      <p class="section-label reveal">Application Tracks</p>
+      <h2 class="section-title reveal">The right programme<br><em>for your context.</em></h2>
+      <p style="color:rgba(240,237,230,0.6); max-width:580px; margin-bottom:0" class="reveal">Each track uses the same 5C framework, with outcomes tailored to your specific speaking environment.</p>
+      <div class="prog-grid reveal">
+        <div class="prog-card"><div class="prog-tag">Leadership</div><div class="prog-name">Voice Readiness for Leadership Presence</div><div class="prog-desc">For leaders who need a voice that sounds clear, steady, and composed across team conversations, decision-making moments, feedback, and difficult discussions.</div></div>
+        <div class="prog-card"><div class="prog-tag">Executive</div><div class="prog-name">Voice Readiness for Boardroom Meetings</div><div class="prog-desc">High-stakes environments where judgment, credibility, and composure are closely observed. Trains vocal control during complex discussions and scrutiny.</div></div>
+        <div class="prog-card"><div class="prog-tag">Stakeholder</div><div class="prog-name">Voice Readiness for Stakeholder Meetings</div><div class="prog-desc">For leaders communicating across diverse groups. Develops a voice that sounds grounded, trustworthy, and aligned while managing tension and expectation.</div></div>
+        <div class="prog-card"><div class="prog-tag">Client-Facing</div><div class="prog-name">Voice Readiness for Client Presentations</div><div class="prog-desc">Helps professionals sound clear, warm, and assured while explaining ideas — building trust rather than pressure.</div></div>
+        <div class="prog-card"><div class="prog-tag">Sales</div><div class="prog-name">Voice Readiness for Sales Presentations</div><div class="prog-desc">Trains vocal control during persuasion, objection handling, and closing conversations. Sound confident, composed, and credible throughout.</div></div>
+        <div class="prog-card"><div class="prog-tag">Stage</div><div class="prog-name">Voice Readiness for Keynote Presentations</div><div class="prog-desc">Prepares speakers for extended time on stage — consistency, stamina, and vocal control from opening to close.</div></div>
+        <div class="prog-card"><div class="prog-tag">High Visibility</div><div class="prog-name">Voice Readiness for TEDx Talks</div><div class="prog-desc">Built for high-visibility talks where every detail matters. Focuses on vocal precision, emotional control, and delivery under heightened expectation.</div></div>
+        <div class="prog-card"><div class="prog-tag">Recording</div><div class="prog-name">Voice Readiness for Audiobook Recordings</div><div class="prog-desc">For authors and narrators recording over long periods. Focuses on stamina, consistency, and clarity across extended sessions.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="testi-wrap">
+    <div class="container">
+      <p class="section-label reveal">What Clients Say</p>
+      <h2 class="section-title reveal">Voices that<br><em>transformed.</em></h2>
+      <div class="testi-grid reveal">
+        <div class="testi-card placeholder"><div class="testi-quote">Add a real client testimonial here — replace this placeholder with their words.</div><div class="testi-name">Client Name</div><div class="testi-role">Role, Company</div></div>
+        <div class="testi-card placeholder"><div class="testi-quote">Add a real client testimonial here — replace this placeholder with their words.</div><div class="testi-name">Client Name</div><div class="testi-role">Role, Company</div></div>
+        <div class="testi-card placeholder"><div class="testi-quote">Add a real client testimonial here — replace this placeholder with their words.</div><div class="testi-name">Client Name</div><div class="testi-role">Role, Company</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="charcoal gold-line cta-block">
+    <div class="container">
+      <h2 class="cta-title reveal">Ready to sound like<br>yourself at your best?</h2>
+      <p class="cta-sub reveal">Get in touch and Alisa will recommend the right programme for your goals.</p>
+      <div class="reveal">
+        <a href="mailto:hello@alisaamouage.com" class="btn-primary">Work with Alisa</a>
+        <button class="btn-secondary" onclick="showPage('elearning')">Explore E-Learning</button>
+      </div>
+    </div>
+  </section>
+
+  <footer><div class="container"><div class="footer-inner">
+    <div class="footer-logo" onclick="showPage('home')">Alisa Amouage</div>
+    <div class="footer-copy">&copy; 2026 Alisa Amouage. All rights reserved.</div>
+    <div class="footer-social">
+      <a href="https://www.instagram.com/alisaamouage/" target="_blank">Instagram</a>
+      <a href="https://www.linkedin.com/in/alisa-amouage/" target="_blank">LinkedIn</a>
+    </div>
+  </div></div></footer>
+</div>
+
+<!-- ════════════════════════════════════
+     PAGE: E-LEARNING
+════════════════════════════════════ -->
+<div class="page" id="page-elearning">
+  <div class="page-hero">
+    <div class="container">
+      <p class="section-label">E-Learning Courses</p>
+      <h1 class="page-title">Professional training,<br><em>powerful presence.</em></h1>
+      <p class="page-subtitle">Structured, practical voice training for real-world communication. Build clarity, confidence, and presence that holds under pressure — at your own pace.</p>
+    </div>
+  </div>
+
+  <section class="course-wrap">
+    <div class="container">
+      <div class="course-card reveal">
+        <div>
+          <span class="course-badge">Available Now on Udemy</span>
+          <h2 class="course-title">Voice Development Training for Public Speakers &amp; Presenters</h2>
+          <p class="course-desc">Unlock the full potential of your voice and speak with confidence, clarity, and charisma. Whether on stage, online, or in the boardroom, Alisa shares the proven techniques she has mastered over 15 years of captivating live audiences.</p>
+          <div class="course-meta">
+            <div class="meta-item"><span class="meta-label">Sections</span><span class="meta-value">9</span></div>
+            <div class="meta-item"><span class="meta-label">Lectures</span><span class="meta-value">50</span></div>
+            <div class="meta-item"><span class="meta-label">Length</span><span class="meta-value">2h 47m</span></div>
+            <div class="meta-item"><span class="meta-label">Platform</span><span class="meta-value">Udemy</span></div>
+          </div>
+          <ul class="course-features">
+            <li>Breath control and vocal warm-up techniques</li>
+            <li>Tone, resonance, and projection for any room</li>
+            <li>Managing nerves and performing under pressure</li>
+            <li>Pacing, pausing, and commanding attention</li>
+            <li>Stage presence and charismatic delivery</li>
+            <li>Practical exercises for use before any presentation</li>
+          </ul>
+          <a href="https://www.udemy.com/course/voice-development-training-for-public-speakers/?referralCode=D95AAB3550004B83EF50" target="_blank" class="btn-primary">Enrol on Udemy</a>
+          <button class="btn-secondary" onclick="showPage('coaching')">1-on-1 Coaching</button>
+        </div>
+        <div class="course-img">
+          <img src="https://images.squarespace-cdn.com/content/v1/6805d79834f5d06fffe62691/1772549578102-TNIDP9QVHHE1J62AU6HQ/unsplash-image-UK78i6vK3sc.jpg" alt="Voice Development Training">
+        </div>
+      </div>
+      <div class="course-card dimmed reveal">
+        <div>
+          <span class="course-badge">Coming Soon</span>
+          <h2 class="course-title">Voice Readiness for Sales Professionals</h2>
+          <p class="course-desc">A dedicated course applying the 5C Voice Framework to the specific demands of sales — building rapport, handling objections, and closing with confidence.</p>
+          <div class="course-meta"><div class="meta-item"><span class="meta-label">Status</span><span class="meta-value">In Development</span></div></div>
+          <a href="mailto:hello@alisaamouage.com" class="btn-secondary" style="margin-left:0;">Register Interest</a>
+        </div>
+        <div class="course-img"><div class="course-img-placeholder">Coming soon</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="reviews-wrap">
+    <div class="container">
+      <p class="section-label reveal">Student Reviews</p>
+      <h2 class="section-title reveal">What students<br><em>are saying.</em></h2>
+      <div class="reviews-grid reveal">
+        <div class="review-card"><div class="review-stars">★★★★★</div><div class="review-text">"Incredibly practical. I noticed a difference in how I sounded in meetings within a week of starting the exercises."</div><div class="review-author">Udemy Student</div></div>
+        <div class="review-card"><div class="review-stars">★★★★★</div><div class="review-text">"Alisa's background as a performer really shows. This is not generic advice — it's real technique that actually works."</div><div class="review-author">Udemy Student</div></div>
+        <div class="review-card"><div class="review-stars">★★★★★</div><div class="review-text">"I have always been self-conscious about my voice in presentations. This course gave me tools I use every single day."</div><div class="review-author">Udemy Student</div></div>
+      </div>
+      <p style="font-size:0.73rem; color:var(--silver); margin-top:1.5rem;">Replace with actual verified Udemy reviews.</p>
+    </div>
+  </section>
+
+  <section class="why-wrap">
+    <div class="container">
+      <p class="section-label reveal">Why E-Learning</p>
+      <h2 class="section-title reveal">Train on your<br><em>own terms.</em></h2>
+      <div class="why-grid reveal">
+        <div class="why-card"><div class="why-num">01</div><div class="why-title">Learn at your pace</div><div class="why-text">Revisit any module as many times as you need. The techniques stay with you because you practice them at the moments that matter to you.</div></div>
+        <div class="why-card"><div class="why-num">02</div><div class="why-title">Real-world application</div><div class="why-text">Every exercise is designed to be used in actual professional situations — not just rehearsed in isolation. Practical technique from day one.</div></div>
+        <div class="why-card"><div class="why-num">03</div><div class="why-title">15 years of mastery</div><div class="why-text">Alisa brings the discipline of a classically trained vocalist and the hard-won experience of a professional performer to every lesson.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="charcoal gold-line cta-block">
+    <div class="container">
+      <h2 class="cta-title reveal">Want something more<br>tailored to you?</h2>
+      <p class="cta-sub reveal">The e-learning courses are a great starting point. For deeper, faster transformation, explore Alisa's one-to-one coaching programme.</p>
+      <div class="reveal">
+        <button class="btn-primary" onclick="showPage('coaching')">Explore 1-on-1 Coaching</button>
+        <a href="mailto:hello@alisaamouage.com" class="btn-secondary">Get in Touch</a>
+      </div>
+    </div>
+  </section>
+
+  <footer><div class="container"><div class="footer-inner">
+    <div class="footer-logo" onclick="showPage('home')">Alisa Amouage</div>
+    <div class="footer-copy">&copy; 2026 Alisa Amouage. All rights reserved.</div>
+    <div class="footer-social">
+      <a href="https://www.instagram.com/alisaamouage/" target="_blank">Instagram</a>
+      <a href="https://www.linkedin.com/in/alisa-amouage/" target="_blank">LinkedIn</a>
+    </div>
+  </div></div></footer>
+</div>
+
+<!-- ════════════════════════════════════
+     PAGE: BLOG
+════════════════════════════════════ -->
+<div class="page" id="page-blog">
+  <div class="page-hero">
+    <div class="container">
+      <p class="section-label">The Blog</p>
+      <h1 class="page-title">Notes on voice,<br><em>presence &amp; performance.</em></h1>
+      <p class="page-subtitle">Insights on vocal technique, stage presence, performance mindset, and the art of communicating with impact.</p>
+    </div>
+  </div>
+
+  <section class="blog-wrap">
+    <div class="container">
+      <div class="blog-layout reveal">
+        <div>
+          <article class="post-featured">
+            <div class="post-img"><div class="post-img-ph">Add featured image</div></div>
+            <div>
+              <div class="post-meta"><span class="post-tag">Voice Technique</span><span class="post-date">Add date</span></div>
+              <span class="post-title">How to Stop Your Voice From Shaking When the Stakes Are High</span>
+              <p class="post-excerpt">The moment you care most is often when your voice betrays you. Here is what is actually happening physiologically — and the technique that changes it.</p>
+              <span class="read-more">Read article →</span>
+            </div>
+          </article>
+          <article class="post-item">
+            <div class="post-item-img"><div class="post-img-ph" style="height:100%; min-height:120px; font-size:0.55rem;">Image</div></div>
+            <div>
+              <div class="post-meta"><span class="post-tag">Performance</span><span class="post-date">Add date</span></div>
+              <span class="post-title">The 5-Minute Vocal Warm-Up I Do Before Every Performance</span>
+              <p class="post-excerpt">These exercises prime your breath, open your resonance, and settle your nerves — in five minutes.</p>
+              <span class="read-more">Read article →</span>
+            </div>
+          </article>
+          <article class="post-item">
+            <div class="post-item-img"><div class="post-img-ph" style="height:100%; min-height:120px; font-size:0.55rem;">Image</div></div>
+            <div>
+              <div class="post-meta"><span class="post-tag">Leadership Voice</span><span class="post-date">Add date</span></div>
+              <span class="post-title">Why Your Voice Sounds Different in Recordings — and What to Do About It</span>
+              <p class="post-excerpt">The shock of hearing yourself played back is universal. Understanding why it happens is the first step to genuinely improving what others hear.</p>
+              <span class="read-more">Read article →</span>
+            </div>
+          </article>
+          <article class="post-item">
+            <div class="post-item-img"><div class="post-img-ph" style="height:100%; min-height:120px; font-size:0.55rem;">Image</div></div>
+            <div>
+              <div class="post-meta"><span class="post-tag">Stage Presence</span><span class="post-date">Add date</span></div>
+              <span class="post-title">What Jazz Taught Me About Holding a Room's Attention</span>
+              <p class="post-excerpt">Jazz is built on listening and responding. The best performers — and the best presenters — share the same quality: genuine presence.</p>
+              <span class="read-more">Read article →</span>
+            </div>
+          </article>
+          <p style="font-size:0.72rem; color:var(--dim); padding:2rem 0; border-top:1px solid var(--dim);">Replace placeholder posts above with Alisa's real blog content.</p>
+        </div>
+
+        <aside class="sidebar">
+          <div class="sidebar-block">
+            <div class="sidebar-title">About Alisa</div>
+            <div class="sidebar-avatar"><img src="https://images.squarespace-cdn.com/content/v1/6805d79834f5d06fffe62691/791b0b89-41c7-4ae3-b226-f9034e0f441a/20250103-DSC01783.jpg" alt="Alisa Amouage"></div>
+            <div class="sidebar-name">Alisa Amouage</div>
+            <div class="sidebar-bio" style="margin-top:0.5rem;">Jazz-pop vocalist and executive voice coach. 15+ years on stage. Teaching leaders and speakers to unlock the voice they already have.</div>
+            <a class="sidebar-link" onclick="showPage('home')">More about Alisa →</a>
+          </div>
+          <div class="sidebar-block">
+            <div class="sidebar-title">Topics</div>
+            <ul class="cat-list">
+              <li><a>Voice Technique</a><span class="cat-count">—</span></li>
+              <li><a>Stage Presence</a><span class="cat-count">—</span></li>
+              <li><a>Leadership Voice</a><span class="cat-count">—</span></li>
+              <li><a>Performance Mindset</a><span class="cat-count">—</span></li>
+              <li><a>Breath &amp; Body</a><span class="cat-count">—</span></li>
+              <li><a>Behind the Stage</a><span class="cat-count">—</span></li>
+            </ul>
+          </div>
+          <div class="sidebar-block">
+            <div class="sidebar-title">Stay in the Loop</div>
+            <p class="sidebar-bio" style="margin-bottom:1.25rem;">New articles on voice, performance, and presence — delivered when they're ready.</p>
+            <div class="sub-form">
+              <input type="email" class="sub-input" placeholder="your@email.com">
+              <button class="sub-btn">Subscribe</button>
+              <p class="sub-note">No spam. Unsubscribe any time.</p>
+            </div>
+          </div>
+          <div class="sidebar-block">
+            <div class="sidebar-title">Work with Alisa</div>
+            <p class="sidebar-bio" style="margin-bottom:1.25rem;">Ready to go deeper? Explore the Voice Readiness Programme or book Alisa for your next event.</p>
+            <a class="sb-link" onclick="showPage('coaching')">Voice Coaching →</a>
+            <a class="sb-link" onclick="scrollToSection('contact')">Book a Performance →</a>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <footer><div class="container"><div class="footer-inner">
+    <div class="footer-logo" onclick="showPage('home')">Alisa Amouage</div>
+    <div class="footer-copy">&copy; 2026 Alisa Amouage. All rights reserved.</div>
+    <div class="footer-social">
+      <a href="https://www.instagram.com/alisaamouage/" target="_blank">Instagram</a>
+      <a href="https://www.linkedin.com/in/alisa-amouage/" target="_blank">LinkedIn</a>
+    </div>
+  </div></div></footer>
+</div>
+
+<!-- ════════════════════════════════════
+     JAVASCRIPT
+════════════════════════════════════ -->
+<script>
+const pages = ['home','coaching','elearning','blog'];
+let currentPage = 'home';
+
+function showPage(id) {
+  if (id === currentPage) { window.scrollTo({top:0, behavior:'smooth'}); return; }
+  const prev = document.getElementById('page-' + currentPage);
+  const next = document.getElementById('page-' + id);
+  if (!next) return;
+  prev.classList.remove('active');
+  next.classList.add('active','fade-in');
+  setTimeout(() => next.classList.remove('fade-in'), 500);
+  currentPage = id;
+  window.scrollTo({top:0, behavior:'instant'});
+  updateNav(id);
+  initReveals();
+  // Update title
+  const titles = { home:'Alisa Amouage — Jazz-Pop Vocalist', coaching:'Voice Readiness Programme — Alisa Amouage', elearning:'E-Learning Courses — Alisa Amouage', blog:'Blog — Alisa Amouage' };
+  document.title = titles[id] || 'Alisa Amouage';
+}
+
+function scrollToSection(sectionId) {
+  if (currentPage !== 'home') {
+    showPage('home');
+    setTimeout(() => { const el = document.getElementById(sectionId); if(el) el.scrollIntoView({behavior:'smooth'}); }, 350);
+  } else {
+    const el = document.getElementById(sectionId);
+    if (el) el.scrollIntoView({behavior:'smooth'});
+  }
+}
+
+function updateNav(id) {
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    a.classList.remove('active');
+    if (a.dataset.page === id) a.classList.add('active');
+  });
+  // Nav background: solid on inner pages, gradient on home
+  const nav = document.getElementById('nav');
+  if (id === 'home') {
+    nav.style.background = '';
+    nav.classList.remove('solid');
+  } else {
+    nav.classList.add('solid');
+  }
+}
+
+function toggleMenu() {
+  document.getElementById('mobileMenu').classList.toggle('open');
+}
+
+// Scroll reveal
+function initReveals() {
+  const reveals = document.querySelectorAll('#page-' + currentPage + ' .reveal:not(.visible)');
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); obs.unobserve(e.target); } });
+  }, { threshold: 0.1, rootMargin:'0px 0px -40px 0px' });
+  reveals.forEach(el => obs.observe(el));
+}
+
+// Nav solid on scroll (home only)
+window.addEventListener('scroll', () => {
+  if (currentPage === 'home') {
+    document.getElementById('nav').classList.toggle('solid', window.scrollY > 60);
+  }
+});
+
+// Init
+updateNav('home');
+initReveals();
+</script>
+</body>
+</html>
