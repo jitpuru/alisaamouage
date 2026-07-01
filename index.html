@@ -705,6 +705,15 @@ footer { background: var(--black); border-top: 1px solid var(--dim); padding: 3r
             </div>
           </article>
           <article class="post-item">
+            <div class="post-item-img"><img src="images/gallery-6.jpg" alt="Alisa performing at Rotary Club" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.8);object-position:center 30%;"></div>
+            <div>
+              <div class="post-meta"><span class="post-tag">Live Music</span><span class="post-date">28 June 2026</span></div>
+              <span class="post-title" onclick="showPage('article-4')">Why Live Music Changes the Energy in a Room</span>
+              <p class="post-excerpt">There is a moment — usually within the first 30 seconds of a live performance — when you can feel the entire room shift. Here is what is really happening.</p>
+              <span class="read-more" onclick="showPage('article-4')">Read article →</span>
+            </div>
+          </article>
+          <article class="post-item">
             <div class="post-item-img"><img src="images/gallery-1.jpg" alt="Alisa performing" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.8);"></div>
             <div>
               <div class="post-meta"><span class="post-tag">Performance</span><span class="post-date">5 June 2026</span></div>
@@ -939,11 +948,67 @@ footer { background: var(--black); border-top: 1px solid var(--dim); padding: 3r
   </div></div></footer>
 </div>
 
+<div class="page" id="page-article-4">
+  <div class="page-hero">
+    <div class="container">
+      <button class="article-back" onclick="showPage('blog')">Back to Blog</button>
+      <p class="article-tag-line">Live Music</p>
+      <h1 class="article-headline">Why Live Music Changes the Energy in a Room</h1>
+      <p class="article-date">28 June 2026 &nbsp;·&nbsp; Alisa Amouage</p>
+    </div>
+  </div>
+  <section class="article-body">
+    <div class="container">
+      <div class="article-content reveal">
+        <p>There is a moment — usually within the first 30 seconds of a live performance — when you can feel the entire room shift.</p>
+        <p>Conversations soften. People look up from their phones. The background chatter that filled the space a moment ago fades, not because anyone asked for silence, but because something more compelling has entered the room.</p>
+        <p>I have experienced this hundreds of times from the stage. And every time, it reminds me why live music is not just entertainment — it is one of the most powerful tools an event can have.</p>
+        <h2>Recorded Music Fills Space. Live Music Transforms It.</h2>
+        <p>There is nothing wrong with a great playlist. But recorded music, no matter how carefully curated, is fundamentally fixed. It was made somewhere else, at another time, for no one in particular. It occupies the air without engaging it.</p>
+        <p>Live music is different. It is happening <em>now</em>, in this room, for these people. A live performer is reading the audience, adjusting tone and tempo in real time, responding to the energy in the space. That responsiveness creates something a playlist never can: a genuine sense of occasion.</p>
+        <p>When people feel that something is being performed <em>for</em> them, they become participants rather than bystanders. The entire dynamic of the room changes.</p>
+        <h2>The Science Behind the Shift</h2>
+        <p>This is not just intuition — there is real psychology behind it. Live music triggers the release of oxytocin, the bonding hormone, in ways that recorded music does not replicate to the same degree. When people hear a voice or an instrument in the same physical space, their nervous systems synchronise in subtle ways. Heart rates align. Breathing slows. A shared experience forms, even between strangers.</p>
+        <p>Event planners know this instinctively, even if they have never read the research. The rooms that people remember are almost always the ones where something live happened.</p>
+        <h2>What I See From the Stage</h2>
+        <p>I have performed at whisky bars, corporate galas, wedding receptions, leadership dinners, and installation ceremonies. The venues are different. The guests are different. But the shift is always the same.</p>
+        <p>A table of executives who arrived stressed from a long day begin to relax their shoulders by the second song. A room of strangers at a networking event find a natural opening to speak to each other — the music gave them a shared reference point. Guests at a gala dinner linger longer than they planned because leaving now would mean leaving something that feels alive.</p>
+        <p>Live music creates permission — permission to unwind, to connect, to be present in a way that a corporate agenda rarely allows.</p>
+        <h2>For Event Hosts: What This Means Practically</h2>
+        <p>If you are planning an event and deciding whether live music is worth the investment, here is what I would tell you:</p>
+        <p>The question is not whether your guests will notice the difference. They will. The question is what you want them to feel — and what you want them to remember about the evening you created.</p>
+        <p>Live music is not background. Done well, it is the emotional architecture of your event. It sets the tone before a single speech is made. It carries the room through transitions. It gives your guests something to talk about on the way home.</p>
+        <p>In fifteen years of performing, I have never had a client tell me the live music was too much. I have had many tell me it was the thing that made the night.</p>
+        <hr class="article-divider">
+        <p style="font-size:0.83rem; color:var(--silver); font-style:italic;">Alisa Amouage is a jazz-pop vocalist and executive voice coach with over 15 years of performance experience across Southeast Asia and Europe. She performs at corporate events, galas, private dinners, and landmark celebrations.</p>
+      </div>
+    </div>
+  </section>
+  <section class="article-cta">
+    <div class="container">
+      <h2 class="cta-title reveal">Bring live music to your next event.</h2>
+      <p class="cta-sub reveal">Get in touch to discuss how Alisa can set the tone for your occasion.</p>
+      <div class="reveal">
+        <a href="mailto:hello@alisaamouage.com" class="btn-primary">Book Alisa</a>
+        <button class="btn-secondary" onclick="showPage('blog')">Back to Blog</button>
+      </div>
+    </div>
+  </section>
+  <footer><div class="container"><div class="footer-inner">
+    <div class="footer-logo" onclick="showPage('home')">Alisa Amouage</div>
+    <div class="footer-copy">&copy; 2026 Alisa Amouage. All rights reserved.</div>
+    <div class="footer-social">
+      <a href="https://www.instagram.com/alisaamouage/" target="_blank">Instagram</a>
+      <a href="https://www.linkedin.com/in/alisa-amouage/" target="_blank">LinkedIn</a>
+    </div>
+  </div></div></footer>
+</div>
+
 <!-- ════════════════════════════════════
      JAVASCRIPT
 ════════════════════════════════════ -->
 <script>
-const pages = ['home','coaching','elearning','blog','article-1','article-2','article-3'];
+const pages = ['home','coaching','elearning','blog','article-1','article-2','article-3','article-4'];
 let currentPage = 'home';
 
 function showPage(id) {
@@ -959,7 +1024,7 @@ function showPage(id) {
   updateNav(id);
   initReveals();
   // Update title
-  const titles = { home:'Alisa Amouage — Jazz-Pop Vocalist', coaching:'Voice Readiness Programme — Alisa Amouage', elearning:'E-Learning Courses — Alisa Amouage', blog:'Blog — Alisa Amouage', 'article-1':'How to Stop Your Voice From Shaking — Alisa Amouage', 'article-2':'The 5-Minute Vocal Warm-Up — Alisa Amouage', 'article-3':'What Jazz Taught Me — Alisa Amouage' };
+  const titles = { home:'Alisa Amouage — Jazz-Pop Vocalist', coaching:'Voice Readiness Programme — Alisa Amouage', elearning:'E-Learning Courses — Alisa Amouage', blog:'Blog — Alisa Amouage', 'article-1':'How to Stop Your Voice From Shaking — Alisa Amouage', 'article-2':'The 5-Minute Vocal Warm-Up — Alisa Amouage', 'article-3':'What Jazz Taught Me — Alisa Amouage', 'article-4':'Why Live Music Changes the Energy in a Room — Alisa Amouage' };
   document.title = titles[id] || 'Alisa Amouage';
 }
 
